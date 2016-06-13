@@ -1,6 +1,6 @@
 /**
  * Overrides for Wordpresss to improve integration
- * 
+ *
  * @author Matthias Thom | http://upplex.de
  * @package upBootWP 0.1
  */
@@ -42,6 +42,18 @@ a:hover {
   color: darken(@color-lime, 10%);
 }
 
+// Styling for new logo
+.navbar-brand svg {
+  height: 50px;
+  width: auto;
+}
+
+.nav.navbar-nav a {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+// End of Styling for new logo
+
 .vert-align-middle {
   vertical-align: middle;
 }
@@ -63,7 +75,7 @@ a:hover {
   border-radius: 5px;
   position: relative;
   display: inline-block;
-  
+
   & h2 {
     margin: 0;
   }
@@ -130,9 +142,9 @@ body.logged-in .navbar-fixed-top {
 
 /* .xtarget:target { color:@color-lime; -webkit-transition:.3s; transition:.3s; margin-top:-12px; padding-top:95px; } */
 
-h2 { 
-//  margin-top: -95px; 
-//  padding-top: 95px; 
+h2 {
+//  margin-top: -95px;
+//  padding-top: 95px;
 //  display: inline-block;
 }
 
@@ -161,7 +173,7 @@ h3 {
 
 /**
  * Content wrapping
- */ 
+ */
 
 .container-full {
   margin: 0 auto;
@@ -198,7 +210,7 @@ h3 {
 
 /**
  * Widgets
- */ 
+ */
 
 .widget ul li {
 	list-style: none;
@@ -210,7 +222,7 @@ h3 {
 
 /**
  * Buttons
- */ 
+ */
 
 #submit {
   display: inline-block;
