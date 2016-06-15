@@ -359,6 +359,9 @@ li.col-md-4.img-li .img-capture {
 .container-full {
   padding: 40px 0; }
 
+.container-full.footer {
+  padding: 24px 0; }
+
 /*
 .container-full:nth-child(even) {
   background-color: #e7d5b5;
