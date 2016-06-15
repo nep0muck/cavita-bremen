@@ -444,3 +444,6 @@ div.wpcf7-mail-sent-ng {
 
   .price:hover {
     font-size: .8em; } }
+@media (max-width: 767px) {
+  .navbar-collapse {
+    max-height: none; } }

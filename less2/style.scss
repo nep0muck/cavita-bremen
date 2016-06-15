@@ -620,3 +620,10 @@ div.wpcf7-mail-sent-ng {
     font-size: .8em;
   }
 }
+
+// remove max-height from mobile dropdown menu
+@media (max-width: 767px) {
+  .navbar-collapse {
+    max-height: none;
+  }
+}
