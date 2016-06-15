@@ -35,7 +35,7 @@
 					            <span class="icon-bar"></span>
 							</button>
 
-				            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"  class="navbar-brand"><?php include('logo.php'); ?></a>
+				            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"  class="navbar-brand"><?php get_template_part('inline', 'logo.svg'); ?></a>
 
 				        </div>
 
