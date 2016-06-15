@@ -12,7 +12,7 @@
  */
 
 get_header(); ?>
-			
+
 <?php while ( have_posts() ) : the_post(); ?>
 
 	<?php
@@ -23,7 +23,7 @@ get_header(); ?>
 	     // loop through the rows of data
 	    while ( have_rows('content') ) : the_row();
 
-			if( get_row_layout() == 'leistungen' ): 
+			if( get_row_layout() == 'leistungen' ):
 				$row = get_row_layout(); // Name of layout field 'name' to use as custom post type
 				// check if the flexible content field has rows of data
 				if( have_rows('repeater') ):
@@ -37,7 +37,7 @@ get_header(); ?>
 										<?php $cat = get_sub_field('taxonomie'); ?>
 										<?php $cat_desc = get_sub_field('taxonomie_beschreibung'); ?>
 										<h2 id="<?php echo strtolower($cat->name); ?>" class="xtarget"><?php echo $cat->name; ?></h2>
-										<p class="lead"><?php echo $cat_desc; ?></p>				
+										<p class="lead"><?php echo $cat_desc; ?></p>
 										<?php $args = array(
 											'post_type' => $row,
 											'posts_per_page' => '-1',
@@ -55,7 +55,7 @@ get_header(); ?>
 														<?php
 													// check if the repeater field has rows of data
 													if( have_rows('behandlungsbloecke') ): ?>
-				
+
 													 	<?php // loop through the rows of data
 													    while ( have_rows('behandlungsbloecke') ) : the_row(); ?>
 														    <div class="price">
@@ -83,7 +83,7 @@ get_header(); ?>
 				    <?php endwhile;
 
 				endif;
-			elseif( get_row_layout() == 'preisliste' ): 
+			elseif( get_row_layout() == 'preisliste' ):
 				$row = get_row_layout(); // Name of layout field 'name' to use as custom post type
 				// check if the flexible content field has rows of data
 				if( have_rows('repeater') ):
@@ -194,7 +194,7 @@ get_header(); ?>
 				</div><!-- .container -->
 			</div><!-- .container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> -->
 			<?php elseif( get_row_layout() == 'gallerie_3x1' ): ?>
-			<?php 
+			<?php
 
 				$images = get_sub_field('gallerie_3x1_reihe');
 
@@ -271,7 +271,7 @@ get_header(); ?>
 					                	<?php /* ?></a><?php */ ?>
 								</div><!-- .col-md-4 -->
 					        	</div><!-- .row .vertical-align -->
-						</div><!-- .col-md-12 -->			        
+						</div><!-- .col-md-12 -->
 			        	</div><!-- .row -->
 				</div><!-- .container -->
 			</div><!-- .container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> -->
@@ -323,7 +323,7 @@ get_header(); ?>
 				        	if( have_rows('leistungen') ):
 
 							 	echo '<ul class="list-unstyled">';
-				
+
 							 	// loop through the rows of data
 							    while ( have_rows('leistungen') ) : the_row(); ?>
 									<?php $image = get_sub_field('image');  ?>
@@ -375,7 +375,7 @@ get_header(); ?>
 
 			<?php elseif( get_row_layout() == 'kurse' ): ?>
 
-			
+
 
 							<?php $row = get_row_layout(); // Name of layout field 'name' to use as custom post type ?>
 							<?php $cat = get_sub_field('kurskategorie'); ?>
@@ -408,15 +408,15 @@ get_header(); ?>
 																<tr>
 																	<td class="col-md-4">Veranstaltungsort</td>
 																	<td class="col-md-8"><?php the_field('kursort'); ?></td>
-																</tr>	
+																</tr>
 																<tr>
 																	<td class="col-md-4">Kosten</td>
 																	<td class="col-md-8"><?php the_field('kurskosten'); ?></td>
-																</tr>	
+																</tr>
 																<tr>
 																	<td class="col-md-4">Kursdaten</td>
 																	<td class="col-md-8"><?php the_field('kursdaten'); ?></td>
-																</tr>	
+																</tr>
 																<tr>
 																	<td class="col-md-4">Anmeldung unter</td>
 																	<td class="col-md-8"><?php the_field('kursanmeldung'); ?></td>
@@ -432,7 +432,7 @@ get_header(); ?>
 								<?php endwhile; ?>
 								<?php wp_reset_query(); ?>
 
-				        
+
 
 
 
@@ -441,7 +441,7 @@ get_header(); ?>
 			<div class="container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?>">
 				<div class="container">
 					<div class="row vertical-align text-center align-center">
-						<?php 
+						<?php
 
 						$location = get_sub_field('google_map');
 
@@ -473,7 +473,7 @@ get_header(); ?>
 											 	// loop through the rows of data
 											    while ( have_rows('offnungszeiten') ) : the_row();
 
-													$field_name = "field_54359f4c7c6ba";								
+													$field_name = "field_54359f4c7c6ba";
 													$field = get_field_object($field_name);
 													echo '<span class="block"><strong>' . $field['label'] . '</strong></span>';
 													echo '<span class="block">' . the_sub_field('montag_bis_donnerstag') . '</span>';
@@ -511,7 +511,7 @@ get_header(); ?>
 
 	    // no layouts found
 	    get_template_part( 'content', 'page' );
-		
+
 		// If comments are open or we have at least one comment, load up the comment template
 		if ( comments_open() || '0' != get_comments_number() )
 			comments_template();
@@ -519,6 +519,6 @@ get_header(); ?>
 	endif; ?>
 
 <?php endwhile; // end of the loop. ?>
-			
+
 
 <?php get_footer(); ?>

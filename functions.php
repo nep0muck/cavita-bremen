@@ -66,12 +66,25 @@ function upbootwp_widgets_init() {
 add_action( 'widgets_init', 'upbootwp_widgets_init' );
 
 function upbootwp_scripts() {
-//	wp_enqueue_style( 'upbootwp-css', get_template_directory_uri().'/css/upbootwp.min.css', array(), '1.1');
-	wp_enqueue_style( 'style', get_template_directory_uri().'/style.min.css', array(), '1.1');
+	wp_enqueue_script('bootstrap.js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js', array(), '3.0.3', true);
 	wp_enqueue_script( 'upbootwp-jQuery', get_template_directory_uri().'/js/jquery.js',array(),'2.1.3',true);
 	wp_enqueue_script( 'upbootwp-basefile', get_template_directory_uri().'/js/bootstrap.min.js',array(),'1.1',true);
 }
 add_action( 'wp_enqueue_scripts', 'upbootwp_scripts' );
+
+
+// Load css styles
+function loadStyles() {
+	wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css', array(), '3.0.3');
+
+	wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array(), '4.4.0');
+
+	wp_enqueue_style('googleFonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600,300|Droid+Serif:400,400italic', false);
+
+	wp_enqueue_style( 'style', get_template_directory_uri().'/style.min.css', array(), '1.0');
+}
+add_action('wp_enqueue_scripts', 'loadStyles');
+
 
 
 /**
@@ -81,8 +94,8 @@ add_action( 'wp_enqueue_scripts', 'upbootwp_scripts' );
  * @return void
  */
 function upbootwp_less() {
-	printf('<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600,300|Droid+Serif:400,400italic" rel="stylesheet" type="text/css">');
-	printf('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">');
+//	printf('<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600,300|Droid+Serif:400,400italic" rel="stylesheet" type="text/css">');
+//	printf('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">');
 //	printf('<link rel="stylesheet" type="text/less" href="%s" />', get_template_directory_uri().'/less/bootstrap.less?ver=1.1'); // raus machen :)
 //	printf('<script type="text/javascript">var less=less||{};less.env="development";</script>'); // Entfernen, wenn fertig mit Entwicklung
 //	printf('<script type="text/javascript" src="%s"></script>', get_template_directory_uri().'/js/less.js?ver=1.6.1');

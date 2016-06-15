@@ -44,12 +44,12 @@
 }
 
 // Sizing shortcuts
-.size(@width; @height) {
+.size(@width, @height) {
   width: @width;
   height: @height;
 }
 .square(@size) {
-  .size(@size; @size);
+  .size(@size, @size);
 }
 
 // Placeholder text
@@ -155,17 +155,17 @@
       -ms-transform: scale(@ratio); // IE9+
           transform: scale(@ratio);
 }
-.translate(@x; @y) {
+.translate(@x, @y) {
   -webkit-transform: translate(@x, @y);
       -ms-transform: translate(@x, @y); // IE9+
           transform: translate(@x, @y);
 }
-.skew(@x; @y) {
+.skew(@x, @y) {
   -webkit-transform: skew(@x, @y);
       -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twbs/bootstrap/issues/4885; IE9+
           transform: skew(@x, @y);
 }
-.translate3d(@x; @y; @z) {
+.translate3d(@x, @y, @z) {
   -webkit-transform: translate3d(@x, @y, @z);
           transform: translate3d(@x, @y, @z);
 }
@@ -235,7 +235,7 @@
 }
 
 // CSS3 Content Columns
-.content-columns(@column-count; @column-gap: @grid-gutter-width) {
+.content-columns(@column-count, @column-gap: @grid-gutter-width) {
   -webkit-column-count: @column-count;
      -moz-column-count: @column-count;
           column-count: @column-count;
@@ -273,7 +273,7 @@
   //
   // Creates two color stops, start and end, by specifying a color and position for each color stop.
   // Color stops are not available in IE9 and below.
-  .horizontal(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+  .horizontal(@start-color: #555, @end-color: #333, @start-percent: 0%, @end-percent: 100%) {
     background-image: -webkit-linear-gradient(left, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1-6, Chrome 10+
     background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
     background-repeat: repeat-x;
@@ -284,7 +284,7 @@
   //
   // Creates two color stops, start and end, by specifying a color and position for each color stop.
   // Color stops are not available in IE9 and below.
-  .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+  .vertical(@start-color: #555, @end-color: #333, @start-percent: 0%, @end-percent: 100%) {
     background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Safari 5.1-6, Chrome 10+
     background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
     background-repeat: repeat-x;
