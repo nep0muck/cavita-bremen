@@ -1,7 +1,7 @@
 <?php
 /**
  * Upbootwp_Walker_Nav_Menu class.
- * 
+ *
  * @extends Walker_Nav_Menu
  * @author Matthias Thom | http://upplex.de
  * @package upBootWP 0.1
@@ -10,17 +10,17 @@ class Upbootwp_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
 	 * __construct function.
-	 * 
+	 *
 	 * @access public
 	 * @return void
 	 */
 	public function __construct() {
 		add_filter('nav_menu_css_class' , array($this, 'special_nav_class'), 10 , 2);
 	}
-	
+
 	/**
 	 * special_nav_class function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $classes
 	 * @param mixed $item
@@ -32,16 +32,16 @@ class Upbootwp_Walker_Nav_Menu extends Walker_Nav_Menu {
 		}
 		return $classes;
 	}
-	
+
     /**
      * start_lvl function.
-     * 
+     *
      * @access public
      * @param mixed &$output
      * @param mixed $depth
      * @return void
      */
-    function start_lvl( &$output, $depth ) {
+    function start_lvl( &$output, $depth = 0, $args = array() ) {
 
 		$indent = str_repeat( "\t", $depth );
 		$output	   .= "\n$indent<ul class=\"dropdown-menu\">\n";
@@ -50,7 +50,7 @@ class Upbootwp_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
 	 * start_el function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed &$output
 	 * @param mixed $item
@@ -97,7 +97,7 @@ class Upbootwp_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
 	 * display_element function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $element
 	 * @param mixed &$children_elements
@@ -114,10 +114,10 @@ class Upbootwp_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		$id_field = $this->db_fields['id'];
 
-		if ( is_array( $args[0] ) ) 
+		if ( is_array( $args[0] ) )
 			$args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
-		else if ( is_object( $args[0] ) ) 
-			$args[0]->has_children = ! empty( $children_elements[$element->$id_field] ); 
+		else if ( is_object( $args[0] ) )
+			$args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
 		$cb_args = array_merge( array(&$output, $element, $depth), $args);
 		call_user_func_array(array(&$this, 'start_el'), $cb_args);
 
@@ -148,5 +148,5 @@ class Upbootwp_Walker_Nav_Menu extends Walker_Nav_Menu {
 	}
 
 
-    
+
 }

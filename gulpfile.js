@@ -1,88 +1,3 @@
-// var gulp = require('gulp'),
-//     sass = require('gulp-sass'),
-//     less = require('gulp-less'),
-//     plumber = require('gulp-plumber'),
-//     autoprefixer = require('gulp-autoprefixer'),
-//     cssnano = require('gulp-cssnano'),
-//     jshint = require('gulp-jshint'),
-//     uglify = require('gulp-uglify'),
-//     imagemin = require('gulp-imagemin'),
-//     rename = require('gulp-rename'),
-//     concat = require('gulp-concat'),
-//     notify = require('gulp-notify'),
-//     cache = require('gulp-cache'),
-//     livereload = require('gulp-livereload'),
-//     del = require('del');
-
-
-// // gulp.task('styles', function() {
-// //   return sass('./less2/**/style.scss')
-// //     .pipe(plumber())
-// //     // .pipe(autoprefixer('last 2 version'))
-// //     .pipe(gulp.dest('./css/'))
-// //     .pipe(rename({suffix: '.min'}))
-// //     .pipe(cssnano({
-// //     discardComments: {
-// //         removeAll: true
-// //     }
-// // }))
-// //     .pipe(gulp.dest('./'))
-// //     .pipe(notify({ message: 'Styles task complete' }));
-// // });
-
-
-// gulp.task('styles', function() {
-//   gulp.src('./less2/**/style.scss')
-//     .pipe(sass().on('error', sass.logError))
-//     .pipe(gulp.dest('./css/'))
-//     .pipe(rename({suffix: '.min'}))
-//     .pipe(cssnano({
-//     discardComments: {
-//         removeAll: true
-//     }
-//   }))
-// });
-
-
-// gulp.task('default', function() {
-//     gulp.start('styles');
-// });
-
-
-// gulp.task('watch', function() {
-
-//   // Create LiveReload server
-//   livereload.listen();
-
-//   // Watch any files in dist/, reload on change
-//   gulp.watch(['./**']).on('change', livereload.changed);
-//   // Watch .scss files
-//   gulp.watch('less2/**/*.scss', ['styles']);
-
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 Gulpfile.js file for the tutorial:
 Using Gulp, SASS and Browser-Sync for your front end web development - DESIGNfromWITHIN
@@ -111,16 +26,16 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 var config = {
-    sassPath: './less2/**/',
+    sassPath: './css',
     nodeDir: './node_modules',
-    wpDir: 'C:/xampp/htdocs/wordpress/wp-content/themes/bgranzowsixteen',
+    wpDir: 'C:/xampp/htdocs/wordpress/wp-content/themes/cavita-bremen',
 }
 
 /* Scripts task */
 gulp.task('scripts', function() {
   return gulp.src([
     /* Add your JS files here, they will be combined in this order */
-    'js/vendor/jquery-1.11.1.js',
+    'js/jquery.js',
     'js/app.js'
     ])
     .pipe(concat('main.js'))
@@ -140,13 +55,10 @@ gulp.task('sass', function () {
             config.sassPath,
         ].concat(neat)
     }))
-    //.pipe(gulp.dest('./'))
     .pipe(gulp.dest(config.wpDir))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    //.pipe(gulp.dest('./'))
     .pipe(gulp.dest(config.wpDir))
-    /* Reload the browser CSS after every change */
     .pipe(reload({stream:true}));
 });
 

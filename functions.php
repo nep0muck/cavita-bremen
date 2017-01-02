@@ -237,3 +237,132 @@ function upbootwp_breadcrumbs() {
 
 	}
 }
+
+
+
+
+
+
+/*
+* Creating a function to create our Custom Post Type
+*/
+
+function custom_post_type_leistungen() {
+
+// Set UI labels for Custom Post Type
+	$labels = array(
+		'name'                => _x( 'Leistungen', 'Post Type General Name', 'upbootwp' ),
+		'singular_name'       => _x( 'Leistung', 'Post Type Singular Name', 'upbootwp' ),
+		'menu_name'           => __( 'Leistungen', 'upbootwp' ),
+		'all_items'           => __( 'Alle Leistungen', 'upbootwp' ),
+		'view_item'           => __( 'Leistung anschauen', 'upbootwp' ),
+		'add_new_item'        => __( 'Neue Leistung', 'upbootwp' ),
+		'add_new'             => __( 'Neu', 'upbootwp' ),
+		'edit_item'           => __( 'Editiere Leistung', 'upbootwp' ),
+		'update_item'         => __( 'Aktualisiere Leistung', 'upbootwp' ),
+		'search_items'        => __( 'Suche Leistung', 'upbootwp' ),
+		'not_found'           => __( 'Not Found', 'upbootwp' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'upbootwp' ),
+	);
+
+// Set other options for Custom Post Type
+
+	$args = array(
+		'label'               => __( 'leistungen', 'upbootwp' ),
+		'description'         => __( 'Alle Leistungen der Praxis', 'upbootwp' ),
+		'labels'              => $labels,
+		// Features this CPT supports in Post Editor
+		'supports'            => array( 'title', 'editor', 'custom-fields', ),
+		/* A hierarchical CPT is like Pages and can have
+		* Parent and child items. A non-hierarchical CPT
+		* is like Posts.
+		*/
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+	);
+
+	// Registering your Custom Post Type
+	register_post_type( 'leistungen', $args );
+
+}
+
+/* Hook into the 'init' action so that the function
+* Containing our post type registration is not
+* unnecessarily executed.
+*/
+
+add_action( 'init', 'custom_post_type_leistungen', 0 );
+
+
+
+/*
+* Creating a function to create our Custom Post Type
+*/
+
+function custom_post_type_kurse() {
+
+// Set UI labels for Custom Post Type
+	$labels = array(
+		'name'                => _x( 'Kurse', 'Post Type General Name', 'upbootwp' ),
+		'singular_name'       => _x( 'Kurs', 'Post Type Singular Name', 'upbootwp' ),
+		'menu_name'           => __( 'Kurse', 'upbootwp' ),
+		'all_items'           => __( 'Alle Kurse', 'upbootwp' ),
+		'view_item'           => __( 'Kurs anschauen', 'upbootwp' ),
+		'add_new_item'        => __( 'Neue Kurs', 'upbootwp' ),
+		'add_new'             => __( 'Neu', 'upbootwp' ),
+		'edit_item'           => __( 'Editiere Kurs', 'upbootwp' ),
+		'update_item'         => __( 'Aktualisiere Kurs', 'upbootwp' ),
+		'search_items'        => __( 'Suche Kurs', 'upbootwp' ),
+		'not_found'           => __( 'Not Found', 'upbootwp' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'upbootwp' ),
+	);
+
+// Set other options for Custom Post Type
+
+	$args = array(
+		'label'               => __( 'kurse', 'upbootwp' ),
+		'description'         => __( 'Alle Kurse der Praxis', 'upbootwp' ),
+		'labels'              => $labels,
+		// Features this CPT supports in Post Editor
+		'supports'            => array( 'title', 'editor', 'custom-fields', ),
+		// You can associate this CPT with a taxonomy or custom taxonomy.
+		'taxonomies'					=> array( 'kurse' ),
+		/* A hierarchical CPT is like Pages and can have
+		* Parent and child items. A non-hierarchical CPT
+		* is like Posts.
+		*/
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+	);
+
+	// Registering your Custom Post Type
+	register_post_type( 'kurse', $args );
+
+}
+
+/* Hook into the 'init' action so that the function
+* Containing our post type registration is not
+* unnecessarily executed.
+*/
+
+add_action( 'init', 'custom_post_type_kurse', 0 );
