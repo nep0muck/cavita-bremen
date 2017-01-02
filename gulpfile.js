@@ -1,54 +1,184 @@
-var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
-    less = require('gulp-less'),
-    plumber = require('gulp-plumber'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cssnano = require('gulp-cssnano'),
-    jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
-    rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
-    del = require('del');
+// var gulp = require('gulp'),
+//     sass = require('gulp-sass'),
+//     less = require('gulp-less'),
+//     plumber = require('gulp-plumber'),
+//     autoprefixer = require('gulp-autoprefixer'),
+//     cssnano = require('gulp-cssnano'),
+//     jshint = require('gulp-jshint'),
+//     uglify = require('gulp-uglify'),
+//     imagemin = require('gulp-imagemin'),
+//     rename = require('gulp-rename'),
+//     concat = require('gulp-concat'),
+//     notify = require('gulp-notify'),
+//     cache = require('gulp-cache'),
+//     livereload = require('gulp-livereload'),
+//     del = require('del');
 
 
-gulp.task('styles', function() {
-  return sass('./less2/**/style.scss')
-    .pipe(plumber())
-    // .pipe(autoprefixer('last 2 version'))
-    .pipe(gulp.dest('./css/'))
+// // gulp.task('styles', function() {
+// //   return sass('./less2/**/style.scss')
+// //     .pipe(plumber())
+// //     // .pipe(autoprefixer('last 2 version'))
+// //     .pipe(gulp.dest('./css/'))
+// //     .pipe(rename({suffix: '.min'}))
+// //     .pipe(cssnano({
+// //     discardComments: {
+// //         removeAll: true
+// //     }
+// // }))
+// //     .pipe(gulp.dest('./'))
+// //     .pipe(notify({ message: 'Styles task complete' }));
+// // });
+
+
+// gulp.task('styles', function() {
+//   gulp.src('./less2/**/style.scss')
+//     .pipe(sass().on('error', sass.logError))
+//     .pipe(gulp.dest('./css/'))
+//     .pipe(rename({suffix: '.min'}))
+//     .pipe(cssnano({
+//     discardComments: {
+//         removeAll: true
+//     }
+//   }))
+// });
+
+
+// gulp.task('default', function() {
+//     gulp.start('styles');
+// });
+
+
+// gulp.task('watch', function() {
+
+//   // Create LiveReload server
+//   livereload.listen();
+
+//   // Watch any files in dist/, reload on change
+//   gulp.watch(['./**']).on('change', livereload.changed);
+//   // Watch .scss files
+//   gulp.watch('less2/**/*.scss', ['styles']);
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Gulpfile.js file for the tutorial:
+Using Gulp, SASS and Browser-Sync for your front end web development - DESIGNfromWITHIN
+http://designfromwithin.com/blog/gulp-sass-browser-sync-front-end-dev
+Steps:
+1. Install gulp globally:
+npm install --global gulp
+2. Type the following after navigating in your project folder:
+npm install gulp gulp-util gulp-sass gulp-uglify gulp-rename gulp-minify-css gulp-notify gulp-concat gulp-plumber browser-sync --save-dev
+3. Move this file in your project folder
+4. Setup your vhosts or just use static server (see 'Prepare Browser-sync for localhost' below)
+5. Type 'Gulp' and ster developing
+*/
+
+/* Needed gulp config */
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var neat = require('node-neat');
+var notify = require('gulp-notify');
+var minifycss = require('gulp-cssnano');
+var concat = require('gulp-concat');
+var plumber = require('gulp-plumber');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
+
+var config = {
+    sassPath: './less2/**/',
+    nodeDir: './node_modules',
+    wpDir: 'C:/xampp/htdocs/wordpress/wp-content/themes/bgranzowsixteen',
+}
+
+/* Scripts task */
+gulp.task('scripts', function() {
+  return gulp.src([
+    /* Add your JS files here, they will be combined in this order */
+    'js/vendor/jquery-1.11.1.js',
+    'js/app.js'
+    ])
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('js'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(cssnano({
-    discardComments: {
-        removeAll: true
-    }
-}))
-    .pipe(gulp.dest('./'))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(uglify())
+    .pipe(gulp.dest('js'));
 });
 
-
-gulp.task('default', function() {
-    gulp.start('styles');
+/* Sass task */
+gulp.task('sass', function () {
+    gulp.src(config.sassPath + '/style.scss')
+    .pipe(plumber())
+    .pipe(sass({
+        style: 'compressed',
+        includePaths: [
+            config.sassPath,
+        ].concat(neat)
+    }))
+    //.pipe(gulp.dest('./'))
+    .pipe(gulp.dest(config.wpDir))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(minifycss())
+    //.pipe(gulp.dest('./'))
+    .pipe(gulp.dest(config.wpDir))
+    /* Reload the browser CSS after every change */
+    .pipe(reload({stream:true}));
 });
 
-gulp.task('watch', function() {
-
-  // Watch .scss files
-  gulp.watch('less2/**/*.scss', ['styles']);
-
+/* Reload task */
+gulp.task('bs-reload', function () {
+    browserSync.reload();
 });
 
+/* Prepare Browser-sync for localhost */
+gulp.task('browser-sync', function() {
+    browserSync.init(['css/*.css', 'js/*.js'], {
+        /*
+        I like to use a vhost, WAMP guide: https://www.kristengrote.com/blog/articles/how-to-set-up-virtual-hosts-using-wamp, XAMP guide: http://sawmac.com/xampp/virtualhosts/
+        */
+        proxy: 'http://localhost:8080/wordpress/'
+        /* For a static server you would use this: */
+        /*
+        server: {
+            baseDir: './'
+        }
+        */
+    });
+});
 
-gulp.task('watch', function() {
-
-  // Create LiveReload server
-  livereload.listen();
-
-  // Watch any files in dist/, reload on change
-  gulp.watch(['./**']).on('change', livereload.changed);
-
+/* Watch scss, js and html files, doing different things with each. */
+gulp.task('default', ['sass', 'browser-sync'], function () {
+    /* Watch scss, run the sass task on change. */
+    gulp.watch(['scss/*.scss', 'scss/**/*.scss', 'scss/*.sass', 'scss/**/*.sass'], ['sass'])
+    /* Watch app.js file, run the scripts task on change. */
+    gulp.watch(['js/app.js'], ['scripts'])
+    /* Watch .css files, run the bs-reload task on change. */
+    gulp.watch(['*.css'], ['bs-reload']);
+    /* Watch .html files, run the bs-reload task on change. */
+    gulp.watch(['*.html'], ['bs-reload']);
 });
