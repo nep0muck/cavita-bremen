@@ -257,7 +257,7 @@ function custom_post_type_leistungen() {
 		'all_items'           => __( 'Alle Leistungen', 'upbootwp' ),
 		'view_item'           => __( 'Leistung anschauen', 'upbootwp' ),
 		'add_new_item'        => __( 'Neue Leistung', 'upbootwp' ),
-		'add_new'             => __( 'Neu', 'upbootwp' ),
+		'add_new'             => __( 'Neue Leistung hinzufuegen', 'upbootwp' ),
 		'edit_item'           => __( 'Editiere Leistung', 'upbootwp' ),
 		'update_item'         => __( 'Aktualisiere Leistung', 'upbootwp' ),
 		'search_items'        => __( 'Suche Leistung', 'upbootwp' ),
@@ -272,7 +272,7 @@ function custom_post_type_leistungen() {
 		'description'         => __( 'Alle Leistungen der Praxis', 'upbootwp' ),
 		'labels'              => $labels,
 		// Features this CPT supports in Post Editor
-		'supports'            => array( 'title', 'editor', 'custom-fields', ),
+		'supports'            => array( 'title', 'editor' ),
 		/* A hierarchical CPT is like Pages and can have
 		* Parent and child items. A non-hierarchical CPT
 		* is like Posts.
@@ -289,6 +289,8 @@ function custom_post_type_leistungen() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
+
+		'taxonomies'					=> array( 'category' ),
 	);
 
 	// Registering your Custom Post Type
@@ -318,8 +320,8 @@ function custom_post_type_kurse() {
 		'menu_name'           => __( 'Kurse', 'upbootwp' ),
 		'all_items'           => __( 'Alle Kurse', 'upbootwp' ),
 		'view_item'           => __( 'Kurs anschauen', 'upbootwp' ),
-		'add_new_item'        => __( 'Neue Kurs', 'upbootwp' ),
-		'add_new'             => __( 'Neu', 'upbootwp' ),
+		'add_new_item'        => __( 'Neuer Kurs', 'upbootwp' ),
+		'add_new'             => __( 'Neuen Kurs hinzufuegen', 'upbootwp' ),
 		'edit_item'           => __( 'Editiere Kurs', 'upbootwp' ),
 		'update_item'         => __( 'Aktualisiere Kurs', 'upbootwp' ),
 		'search_items'        => __( 'Suche Kurs', 'upbootwp' ),
@@ -334,9 +336,7 @@ function custom_post_type_kurse() {
 		'description'         => __( 'Alle Kurse der Praxis', 'upbootwp' ),
 		'labels'              => $labels,
 		// Features this CPT supports in Post Editor
-		'supports'            => array( 'title', 'editor', 'custom-fields', ),
-		// You can associate this CPT with a taxonomy or custom taxonomy.
-		'taxonomies'					=> array( 'kurse' ),
+		'supports'            => array( 'title', 'editor' ),
 		/* A hierarchical CPT is like Pages and can have
 		* Parent and child items. A non-hierarchical CPT
 		* is like Posts.
@@ -353,6 +353,8 @@ function custom_post_type_kurse() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
+
+		'taxonomies'					=> array( 'category' ),
 	);
 
 	// Registering your Custom Post Type
@@ -366,3 +368,15 @@ function custom_post_type_kurse() {
 */
 
 add_action( 'init', 'custom_post_type_kurse', 0 );
+
+
+
+
+
+
+
+
+
+
+
+

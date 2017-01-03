@@ -300,6 +300,40 @@ get_header(); ?>
 		        	</div><!-- .row -->
 				</div><!-- .container -->
 			</div><!-- .container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> -->
+
+
+			<?php elseif( get_row_layout() == 'embed_block' ): ?>
+
+			<?php
+				$left = 'col-md-pull-8';
+				$right = 'col-md-push-4';
+
+				$field = get_field_object('alignment');
+				$value = $field['value'];
+			?>
+
+			<div class="container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?>">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+		        	<div class="row <?php the_sub_field('vertical_align'); ?> <?php the_sub_field('horizontal_align'); ?>">
+			        	<div class="col-md-8 <?php if( get_sub_field('alignment') == 'left' ) { echo $right; } else { echo 'text-center'; } ?>">
+			        		<?php if( get_sub_field('text_heading') ) { ?><h2 id="<?php strtolower(the_sub_field('text_heading')); ?>"><?php the_sub_field('text_heading'); ?></h2> <?php } ?>
+		        			<?php if( get_sub_field('text_subheading') ) { ?><p class="lead"><?php the_sub_field('text_subheading'); ?></p> <?php } ?>
+			     	   		<?php the_sub_field('text_area'); ?>
+			        	</div>
+								<div class="col-md-4 <?php if( get_sub_field('alignment') == 'left' ) { echo $left; } ?>">
+	                <div class="text-center embed-container">
+										<?php the_sub_field('oembed'); ?>
+	                </div>
+		            </div>
+			        </div>
+		        </div>
+        	</div><!-- .row -->
+				</div><!-- .container -->
+			</div><!-- .container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> -->
+
+
 			<?php elseif( get_row_layout() == 'teaser_block' ): ?>
 			<div class="container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> full-width-bg">
 				<div class="container">
