@@ -305,28 +305,75 @@ get_header(); ?>
 			<?php elseif( get_row_layout() == 'embed_block' ): ?>
 
 			<?php
-				$left = 'col-md-pull-8';
-				$right = 'col-md-push-4';
 
-				$field = get_field_object('alignment');
-				$value = $field['value'];
+        function ytLink($subfield) {
+        	$iframe = get_sub_field($subfield);
+
+					// use preg_match to find iframe src
+					preg_match('/src="(.+?)"/', $iframe, $matches);
+					$src = $matches[1];
+
+
+					// add extra params to iframe src
+					$params = array(
+					    'modestbranding' => 1,
+					    'controls'    => 0,
+					    'hd'        => 1,
+					    'autohide'    => 1,
+					    'rel' => 0,
+					    'showinfo' => 0,
+					    'iv_load_policy' => 3,
+					);
+
+					$new_src = add_query_arg($params, $src);
+
+					$iframe = str_replace($src, $new_src, $iframe);
+
+
+					// add extra attributes to iframe html
+					$attributes = 'frameborder="0"';
+
+					$iframe = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
+
+					return $iframe;
+				}
+
 			?>
 
-			<div class="container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?>">
+			<div class="container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> embed-block">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
 		        	<div class="row <?php the_sub_field('vertical_align'); ?> <?php the_sub_field('horizontal_align'); ?>">
-			        	<div class="col-md-8 <?php if( get_sub_field('alignment') == 'left' ) { echo $right; } else { echo 'text-center'; } ?>">
+			        	<div class="col-md-12">
 			        		<?php if( get_sub_field('text_heading') ) { ?><h2 id="<?php strtolower(the_sub_field('text_heading')); ?>"><?php the_sub_field('text_heading'); ?></h2> <?php } ?>
 		        			<?php if( get_sub_field('text_subheading') ) { ?><p class="lead"><?php the_sub_field('text_subheading'); ?></p> <?php } ?>
 			     	   		<?php the_sub_field('text_area'); ?>
 			        	</div>
-								<div class="col-md-4 <?php if( get_sub_field('alignment') == 'left' ) { echo $left; } ?>">
-	                <div class="text-center embed-container">
-										<?php the_sub_field('oembed'); ?>
-	                </div>
-		            </div>
+			       	</div>
+			       	<div class="row">
+									<?php
+										// check if the repeater field has rows of data
+										if( have_rows('oembed_repeater') ):
+
+											$iframe = get_sub_field('oembed');
+										 ?>
+											<ul class="list-unstyled">
+										 	<?php // loop through the rows of data
+										    while ( have_rows('oembed_repeater') ) : the_row(); ?>
+													<li class="col-md-4">
+						                <div class="embed-container">
+															<?php echo ytLink('oembed'); ?>
+						                </div>
+											    </li>
+										  <?php endwhile; ?>
+										  </ul>
+										<?php else :
+
+										    // no rows found
+
+										endif;
+									?>
 			        </div>
 		        </div>
         	</div><!-- .row -->

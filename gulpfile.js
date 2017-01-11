@@ -47,7 +47,7 @@ gulp.task('scripts', function() {
 
 /* Sass task */
 gulp.task('sass', function () {
-    gulp.src(config.sassPath + '/style.scss')
+    return gulp.src(config.sassPath + '/style.scss')
     .pipe(plumber())
     .pipe(sass({
         style: 'compressed',
@@ -62,10 +62,6 @@ gulp.task('sass', function () {
     .pipe(reload({stream:true}));
 });
 
-/* Reload task */
-gulp.task('bs-reload', function () {
-    browserSync.reload();
-});
 
 /* Prepare Browser-sync for localhost */
 gulp.task('browser-sync', function() {
@@ -83,10 +79,17 @@ gulp.task('browser-sync', function() {
     });
 });
 
+
+/* Reload task */
+gulp.task('bs-reload', function () {
+    browserSync.reload();
+});
+
+
 /* Watch scss, js and html files, doing different things with each. */
 gulp.task('default', ['sass', 'browser-sync'], function () {
     /* Watch scss, run the sass task on change. */
-    gulp.watch(['scss/*.scss', 'scss/**/*.scss', 'scss/*.sass', 'scss/**/*.sass'], ['sass'])
+    gulp.watch(['css/*.scss', 'css/**/*.scss', 'css/*.sass', 'css/**/*.sass'], ['sass'])
     /* Watch app.js file, run the scripts task on change. */
     gulp.watch(['js/app.js'], ['scripts'])
     /* Watch .css files, run the bs-reload task on change. */
