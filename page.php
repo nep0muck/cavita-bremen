@@ -503,31 +503,43 @@ get_header(); ?>
 												<div class="row">
 													<div class="col-md-12">
 														<h2><?php the_field('kursname'); ?></h2>
+														<?php if (get_field('kursbeschreibung')) { ?>
 														<h3>Kursbeschreibung</h3>
 														<?php the_field('kursbeschreibung'); ?>
+														<?php } ?>
 														<h3>Kursdetails</h3>
 														<table class="table table-striped">
 															<tbody>
+																<?php if (get_field('kursteilnehmer')) { ?>
 																<tr>
 																	<td class="col-md-4">Maximale Teilnehmeranzahl</td>
 																	<td class="col-md-8"><?php the_field('kursteilnehmer'); ?></td>
 																</tr>
+																<?php } ?>
+																<?php if (get_field('kursort')) { ?>
 																<tr>
 																	<td class="col-md-4">Veranstaltungsort</td>
 																	<td class="col-md-8"><?php the_field('kursort'); ?></td>
 																</tr>
+																<?php } ?>
+																<?php if (get_field('kurskosten')) { ?>
 																<tr>
 																	<td class="col-md-4">Kosten</td>
 																	<td class="col-md-8"><?php the_field('kurskosten'); ?></td>
 																</tr>
+																<?php } ?>
+																<?php if (get_field('kursdaten')) { ?>
 																<tr>
 																	<td class="col-md-4">Kursdaten</td>
 																	<td class="col-md-8"><?php the_field('kursdaten'); ?></td>
 																</tr>
+																<?php } ?>
+																<?php if (get_field('kursanmeldung')) { ?>
 																<tr>
 																	<td class="col-md-4">Anmeldung unter</td>
 																	<td class="col-md-8"><?php the_field('kursanmeldung'); ?></td>
 																</tr>
+																<?php } ?>
 															</tbody>
 														</table>
 													</div>
