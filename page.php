@@ -220,6 +220,33 @@ get_header(); ?>
 					</div><!-- .container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> -->
 				<?php endif; ?>
 
+			<?php elseif( get_row_layout() == 'gallerie' ): ?>
+			<?php
+
+				$images = get_sub_field('gallerie_reihe');
+
+				if( $images ): ?>
+					<div class="container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?>">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="row">
+								    <ul class="list-unstyled">
+							        <?php foreach( $images as $image ): ?>
+						            <li class="col-md-4">
+					                <a href="<?php echo $image['url']; ?>">
+					                  <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" />
+					                </a>
+						            </li>
+							        <?php endforeach; ?>
+								    </ul>
+									</div>
+							  </div>
+					    </div><!-- .row -->
+						</div><!-- .container -->
+					</div><!-- .container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> -->
+				<?php endif; ?>
+
 			<?php elseif( get_row_layout() == 'text_block' ): ?>
 			<div class="container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?>">
 				<div class="container">
@@ -287,14 +314,13 @@ get_header(); ?>
 				        			<?php if( get_sub_field('text_subheading') ) { ?><p class="lead"><?php the_sub_field('text_subheading'); ?></p> <?php } ?>
 					     	   		<?php the_sub_field('text_area'); ?>
 					        	</div>
-							<div class="col-md-4 col-md-pull-8">
-                                                                <?php /* ?><a href="<?php echo $image['url']; ?>"><?php */ ?>
-                                                                <div class="text-center">
-                                                            <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" class="img-thumbnail" />
-                                                        </div>
-                                                        <?php /* ?></a><?php */ ?>
-                                                    </div>
-
+										<div class="col-md-4 col-md-pull-8">
+			                <?php /* ?><a href="<?php echo $image['url']; ?>"><?php */ ?>
+			                <div class="text-center">
+			                  <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" class="img-thumbnail" />
+			                </div>
+			                <?php /* ?></a><?php */ ?>
+			              </div>
 					        </div>
 				        </div>
 		        	</div><!-- .row -->
