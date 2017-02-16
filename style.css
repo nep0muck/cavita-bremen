@@ -313,6 +313,9 @@ ul.no-margin {
   -webkit-margin-end: 0;
   -webkit-padding-start: 0; }
 
+ul.list-gallery li {
+  margin-bottom: 30px; }
+
 img {
   width: 100%;
   max-width: 100%; }

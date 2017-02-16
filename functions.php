@@ -86,6 +86,12 @@ function loadStyles() {
 add_action('wp_enqueue_scripts', 'loadStyles');
 
 
+// Add gallery image size to images
+add_action( 'after_setup_theme', 'wpdocs_theme_setup' );
+function wpdocs_theme_setup() {
+  add_image_size('gallery-images', 360, 240, true);
+}
+
 
 /**
  * upbootwp_less function.

@@ -231,11 +231,11 @@ get_header(); ?>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="row">
-								    <ul class="list-unstyled">
+								    <ul class="list-unstyled list-gallery">
 							        <?php foreach( $images as $image ): ?>
 						            <li class="col-md-4">
 					                <a href="<?php echo $image['url']; ?>">
-					                  <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" />
+					                  <img src="<?php echo $image['sizes']['gallery-images']; ?>" alt="<?php echo $image['alt']; ?>" />
 					                </a>
 						            </li>
 							        <?php endforeach; ?>
