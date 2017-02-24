@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/nep0muck/cavita-bremen/issues"
   },
-  "homepage": "https://github.com/nep0muck/cavita-bremen#readme"
+  "homepage": "https://github.com/nep0muck/cavita-bremen#readme",
+  "dependencies": {
+    "lightbox2": "^2.9.0"
+  }
 }

@@ -32,10 +32,17 @@
 </div><!-- #page -->
 
 
+<script type="text/javascript">
 
+</script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script type="text/javascript">
 (function($) {
+
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+});
 
 /*
 *  render_map
@@ -62,7 +69,7 @@ function render_map( $el ) {
 		mapTypeId	: google.maps.MapTypeId.ROADMAP
 	};
 
-	// create map	        	
+	// create map
 	var map = new google.maps.Map( $el[0], args);
 
 	// add a markers reference

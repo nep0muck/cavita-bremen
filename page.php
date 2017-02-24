@@ -231,10 +231,13 @@ get_header(); ?>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="row">
+										<?php if ( get_sub_field('text_heading') ) { ?>
+											<h2 class="col-md-12"><?php the_sub_field('text_heading'); ?></h2>
+										<?php } ?>
 								    <ul class="list-unstyled list-gallery">
 							        <?php foreach( $images as $image ): ?>
 						            <li class="col-md-4">
-					                <a href="<?php echo $image['url']; ?>">
+					                <a href="<?php echo $image['url']; ?>" data-toggle="lightbox" data-gallery="<?php the_sub_field('text_heading'); ?>" >
 					                  <img src="<?php echo $image['sizes']['gallery-images']; ?>" alt="<?php echo $image['alt']; ?>" />
 					                </a>
 						            </li>
@@ -389,7 +392,10 @@ get_header(); ?>
 										    while ( have_rows('oembed_repeater') ) : the_row(); ?>
 													<li class="col-md-4">
 						                <div class="embed-container">
-															<?php echo ytLink('oembed'); ?>
+						                	<a href="<?php get_sub_field('oembed'); ?>" data-toggle="lightbox" data-gallery="youtubevideos">
+						                		<?php the_sub_field('oembed_subheading'); ?>
+						                	</a>
+															<?php /* echo ytLink('oembed');*/ ?>
 						                </div>
 											    </li>
 										  <?php endwhile; ?>
@@ -481,8 +487,6 @@ get_header(); ?>
 
 
 			<?php elseif( get_row_layout() == 'kurse' ): ?>
-
-
 
 							<?php $row = get_row_layout(); // Name of layout field 'name' to use as custom post type ?>
 							<?php $cat = get_sub_field('kurskategorie'); ?>
