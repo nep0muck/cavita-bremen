@@ -347,7 +347,6 @@ get_header(); ?>
 				       	<div class="row">
 									<?php
 									//For Use with Repeater Field
-									$embedcode = get_sub_field('embed');
 									$videos = get_sub_field('oembed_repeater');
 									$videos_raw = get_sub_field('oembed_repeater', FALSE, FALSE);
 
