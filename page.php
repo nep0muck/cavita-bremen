@@ -347,6 +347,7 @@ get_header(); ?>
 				       	<div class="row">
 									<?php
 									//For Use with Repeater Field
+									$embedcode = get_sub_field('embed');
 									$videos = get_sub_field('oembed_repeater');
 									$videos_raw = get_sub_field('oembed_repeater', FALSE, FALSE);
 
@@ -366,6 +367,7 @@ get_header(); ?>
 				                <div class="embed-container">
 													<?php //Lightbox Link via Thumbnail ?>
 													<a href="<?php echo $video['oembed']; ?>" data-toggle="lightbox" data-gallery="youtubevideos" data-type="youtube" data-width="1170">
+														<i class="fa fa-play fa-4x"></i>
 														<img src="<?php echo $video['video_thumb']; ?>"/>
 													</a>
 				                </div>
@@ -373,12 +375,7 @@ get_header(); ?>
 										<?php endforeach; ?>
 									</ul>
 
-									<?php  else :
 
-									    // no rows found
-
-									endif;
-								?>
 				        </div>
 			        </div>
 	        	</div><!-- .row -->

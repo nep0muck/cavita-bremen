@@ -59,7 +59,8 @@ a,
 .price,
 button,
 .btn,
-.navbar-default .navbar-brand i {
+.navbar-default .navbar-brand i,
+.embed-container i {
   transition: all 0.2s linear; }
 
 a {
@@ -371,14 +372,26 @@ li.col-md-4.img-li .img-capture {
 
 .embed-container {
   position: relative;
-  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   max-width: 100%;
   height: auto;
   border: 0;
   border-radius: 4px;
-  box-shadow: 0px 0px 50px #c1c1c1; }
+  box-shadow: 0px 0px 50px #c1c1c1;
+  transform: scale 1.2; }
+
+.embed-container:hover i {
+  color: #c1229e; }
+
+.embed-container i {
+  color: white;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin-left: -25px;
+  margin-top: -30px;
+  text-shadow: 0px 0px 50px #000; }
 
 .embed-container iframe,
 .embed-container object,

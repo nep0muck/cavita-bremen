@@ -396,7 +396,7 @@ function get_video_thumbnail_uri( $video_uri ) {
 
 		// get youtube thumbnail
 		if ( $video['type'] == 'youtube' )
-			$thumbnail_uri = 'http://img.youtube.com/vi/' . $video['id'] . '/hqdefault.jpg';
+			$thumbnail_uri = 'http://img.youtube.com/vi/' . $video['id'] . '/mqdefault.jpg';
 
 		// get vimeo thumbnail
 		if( $video['type'] == 'vimeo' )
