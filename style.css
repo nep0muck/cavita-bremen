@@ -71,6 +71,7 @@ a:hover {
   text-decoration: none; }
 
 .dropdown-menu > .active > a {
+  color: #fff;
   background-color: #c1229e; }
 
 .dropdown-menu > .active > a:hover {
