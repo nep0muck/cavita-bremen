@@ -394,7 +394,7 @@ get_header(); ?>
 				</div><!-- .container -->
 			</div><!-- .container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> -->
 			<?php elseif( get_row_layout() == 'themenbereiche' ): ?>
-			<div class="container-full <?php if ( is_front_page() ) { echo "full-padding"; } ?> full-width-bg">
+			<div class="container-full <?php if ( is_front_page() ) { echo "full-padding full-width-bg"; } ?> ">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 text-center">
