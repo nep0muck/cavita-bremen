@@ -63,10 +63,12 @@ button,
 .embed-container i {
   transition: all 0.2s linear; }
 
-a {
+a,
+.dropdown-menu > .active > a {
   color: #c1229e; }
 
-a:hover {
+a:hover,
+.dropdown-menu > .active > a:hover {
   color: #961a7b;
   text-decoration: none; }
 
@@ -378,8 +380,7 @@ li.col-md-4.img-li .img-capture {
   height: auto;
   border: 0;
   border-radius: 4px;
-  box-shadow: 0px 0px 50px #c1c1c1;
-  transform: scale 1.2; }
+  box-shadow: 0px 0px 50px #c1c1c1; }
 
 .embed-container:hover i {
   color: #c1229e; }
