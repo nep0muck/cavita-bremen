@@ -63,11 +63,16 @@ button,
 .embed-container i {
   transition: all 0.2s linear; }
 
-a,
-.dropdown-menu > .active > a {
+a {
   color: #c1229e; }
 
-a:hover,
+a:hover {
+  color: #961a7b;
+  text-decoration: none; }
+
+.dropdown-menu > .active > a {
+  background-color: #c1229e; }
+
 .dropdown-menu > .active > a:hover {
   color: #961a7b;
   text-decoration: none; }

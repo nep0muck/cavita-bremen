@@ -118,12 +118,19 @@ button,
   transition: all 0.2s linear;
 }
 
-a,
-.dropdown-menu > .active > a {
+a {
   color: $brand-primary;
 }
 
-a:hover,
+a:hover {
+  color: darken($brand-primary, 10%);
+  text-decoration: none;
+}
+
+.dropdown-menu > .active > a {
+  background-color: $brand-primary;
+}
+
 .dropdown-menu > .active > a:hover {
   color: darken($brand-primary, 10%);
   text-decoration: none;
