@@ -446,7 +446,7 @@ get_header(); ?>
 				        			<?php if( get_sub_field('aufgabenbereiche') ) { ?><p class="lead"><?php the_sub_field('aufgabenbereiche'); ?></p> <?php } ?>
 					     	   		<?php if( get_sub_field('biographie') ) { ?><?php the_sub_field('biographie'); ?> <?php } ?>
 					     	   		<?php /* ?><p><a href="tel:<?php the_sub_field('telefonnummer'); ?>"><i class="glyphicon glyphicon-phone"></i> <?php the_sub_field('telefonnummer'); ?></a></p><?php */ ?>
-					     	   		<p><a href="mailto:<?php the_sub_field('email_adresse'); ?>"><i class="fa fa-envelope-o"></i> <?php the_sub_field('email_adresse'); ?></a></p>
+					     	   		<?php if( get_sub_field('email_adresse') ) { <p><a href="mailto:<?php the_sub_field('email_adresse'); ?>"><i class="fa fa-envelope-o"></i> <?php the_sub_field('email_adresse'); ?></a></p> }
 					        	</div>
 					        </div>
 				        </div>
