@@ -337,14 +337,14 @@ get_header(); ?>
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
-			        	<div class="row <?php the_sub_field('vertical_align'); ?> <?php the_sub_field('horizontal_align'); ?>">
+			        	<div class="row embed-container-heading <?php the_sub_field('vertical_align'); ?> <?php the_sub_field('horizontal_align'); ?>">
 				        	<div class="col-md-12">
 				        		<?php if( get_sub_field('text_heading') ) { ?><h2 id="<?php strtolower(the_sub_field('text_heading')); ?>"><?php the_sub_field('text_heading'); ?></h2> <?php } ?>
 			        			<?php if( get_sub_field('text_subheading') ) { ?><p class="lead"><?php the_sub_field('text_subheading'); ?></p> <?php } ?>
 				     	   		<?php the_sub_field('text_area'); ?>
 				        	</div>
 				       	</div>
-				       	<div class="row">
+				       	<div class="row embed-container-parent">
 									<?php
 									//For Use with Repeater Field
 									$videos = get_sub_field('oembed_repeater');
